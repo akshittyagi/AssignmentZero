@@ -119,12 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 str[5]= editTxt5.getText().toString();
                 str[6]= editTxt6.getText().toString();
                 //TODO: Add the check for valid entry numbers and names in editTexts
-                if(checkValidity(str);
+                if(checkValidity(str))
                 {
                     sendResult(str);
                 }
-
-
             }
         });
 
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean checkValidity(String[] str)
     {//returns the validity and also points out the error in the input
         //TODO: Create checking and add a UI feature for pointing out the error
-
+        return true;
     }
 
     public void sendResult(final String[] str){
