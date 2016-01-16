@@ -118,9 +118,21 @@ public class MainActivity extends AppCompatActivity {
                 str[4]= editTxt5.getText().toString();
                 str[5]= editTxt5.getText().toString();
                 str[6]= editTxt6.getText().toString();
-                sendResult(str);
+                //TODO: Add the check for valid entry numbers and names in editTexts
+                if(checkValidity(str);
+                {
+                    sendResult(str);
+                }
+
+
             }
         });
+
+    }
+
+    public boolean checkValidity(String[] str)
+    {//returns the validity and also points out the error in the input
+        //TODO: Create checking and add a UI feature for pointing out the error
 
     }
 
@@ -138,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Snackbar.make(getCurrentFocus(), "Error sending data to server", Snackbar.LENGTH_LONG).show();
-
             }
         }){
             //function for packing data and sending to server in JSON HashMap
