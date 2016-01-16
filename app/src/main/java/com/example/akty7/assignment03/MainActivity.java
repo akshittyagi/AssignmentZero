@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTxt4 = null;
     EditText editTxt5 = null;
     EditText editTxt6 = null;
+    EditText editTxt7 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        editTxt7 = (EditText) findViewById(R.id.editText7);
+        editTxt7.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                editTxt6.getText().clear();
+            }
+        });
+
         //for debugging if FAB fails
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -99,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 str[2]= editTxt3.getText().toString();
                 str[3]= editTxt4.getText().toString();
                 str[4]= editTxt5.getText().toString();
-                str[5]= editTxt5.getText().toString();
-                str[6]= editTxt6.getText().toString();
+                str[5]= editTxt6.getText().toString();
+                str[6]= editTxt7.getText().toString();
                 sendResult(str);
             }
         });
@@ -116,9 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 str[2]= editTxt3.getText().toString();
                 str[3]= editTxt4.getText().toString();
                 str[4]= editTxt5.getText().toString();
-                str[5]= editTxt5.getText().toString();
-                str[6]= editTxt6.getText().toString();
-                //TODO: Add the check for valid entry numbers and names in editTexts
+                str[5]= editTxt6.getText().toString();
+                str[6]= editTxt7.getText().toString();
                 if(checkValidity(str))
                 {
                     sendResult(str);
@@ -129,8 +138,81 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean checkValidity(String[] str)
-    {//returns the validity and also points out the error in the input
-        //TODO: Create checking and add a UI feature for pointing out the error
+    {//returns the validity and also points out the error in the whole input
+        if(str[0].length() == 0)
+        {
+            editTxt.setError("Enter Team Name");
+            return  false;
+        }
+        if(!checkValidityName(str[1]))
+        {
+            editTxt2.setError("Enter Valid Student Name");
+            return  false;
+        }
+        if(!checkValidityEntryNumber(str[2]))
+        {
+            editTxt3.setError("Enter Valid Entry Number");
+            return  false;
+        }
+        if(!checkValidityName(str[3]))
+        {
+            editTxt4.setError("Enter Valid Student Name");
+            return  false;
+        }
+        if(!checkValidityEntryNumber(str[4]))
+        {
+            editTxt5.setError("Enter Valid Entry Number");
+            return  false;
+        }
+        if(!checkValidityName(str[5]))
+        {
+            editTxt6.setError("Enter Valid Student Name");
+            return  false;
+        }
+        if(!checkValidityEntryNumber(str[6]))
+        {
+            editTxt7.setError("Enter Valid Entry Number");
+            return  false;
+        }
+        if(checkValidityEntryNumber(str[2]) &&
+                checkValidityEntryNumber(str[4]) &&
+                checkValidityEntryNumber(str[6]) &&
+                checkValidityName(str[1]) &&
+                checkValidityName(str[3]) &&
+                checkValidityName(str[5])) return true;
+        else return false;
+    }
+
+    public boolean checkValidityEntryNumber(String str)
+    {//returns the validity and also points out the error in the input of Entry numbers
+        if(str.length() == 0) return false;
+        String[] Courses = {"BB1", "BB5", "CE1", "CH1", "CH7", "CS1", "CS5", "ME1", "EE1", "EE3", "EE5", "ME2", "MT1", "MT5", "MT6", "PH1", "TT1"};
+        boolean check1  = false, check2 = false, check3 = false, check4 = false;
+        int year = Integer.parseInt(str.substring(0, 4));
+        String program = str.substring(4, 7);
+        String zero = str.substring(7, 8);
+        int serialNumber = Integer.parseInt(str.substring(8));
+        if(year >= 2008 && year <= 2014) check1 = true;
+        for(String course : Courses)
+        {
+            if(course.equalsIgnoreCase(program)){
+                check2 = true;
+                break;
+            }
+        }
+        if(zero.equals("0")) check3 = true;
+        if(serialNumber > 0 && serialNumber < 1000) check4 = true;
+        return check1 && check2 && check3 && check4;
+    }
+
+    public boolean checkValidityName(String str)
+    {//returns the validity and also points out the error in the input of Names excluding Team Name
+        if(str.length() == 0) return false;
+        char[] characters = str.toCharArray();
+        for(char character : characters)
+        {
+            if(!Character.isLetter(character) && character != ' ') return false;
+        }
         return true;
     }
 
