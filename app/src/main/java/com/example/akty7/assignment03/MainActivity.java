@@ -111,7 +111,14 @@ public class MainActivity extends AppCompatActivity {
                 str[4]= editTxt5.getText().toString();
                 str[5]= editTxt6.getText().toString();
                 str[6]= editTxt7.getText().toString();
-                sendResult(str);
+                if(checkValidity(str))
+                {
+                    sendResult(str);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Invalid Entry",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -132,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     sendResult(str);
                 }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Invalid Entry",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -139,75 +150,100 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkValidity(String[] str)
     {//returns the validity and also points out the error in the whole input
+        boolean check1=false,check2=check1,check3=check1,check4=check1,check5=check1,check6=check1,check7=check1;
         if(str[0].length() == 0)
         {
             editTxt.setError("Enter Team Name");
-            return  false;
+            check1 =  false;
         }
         if(!checkValidityName(str[1]))
         {
             editTxt2.setError("Enter Valid Student Name");
-            return  false;
+            check2 =  false;
         }
         if(!checkValidityEntryNumber(str[2]))
         {
             editTxt3.setError("Enter Valid Entry Number");
-            return  false;
+            check3 =  false;
         }
         if(!checkValidityName(str[3]))
         {
             editTxt4.setError("Enter Valid Student Name");
-            return  false;
+            check4 =  false;
         }
         if(!checkValidityEntryNumber(str[4]))
         {
             editTxt5.setError("Enter Valid Entry Number");
-            return  false;
+            check5 =  false;
         }
         if(!checkValidityName(str[5]))
         {
             editTxt6.setError("Enter Valid Student Name");
-            return  false;
+            check6 =  false;
         }
         if(!checkValidityEntryNumber(str[6]))
         {
             editTxt7.setError("Enter Valid Entry Number");
-            return  false;
+            check7 = false;
         }
-        if(checkValidityEntryNumber(str[2]) &&
-                checkValidityEntryNumber(str[4]) &&
-                checkValidityEntryNumber(str[6]) &&
-                checkValidityName(str[1]) &&
-                checkValidityName(str[3]) &&
-                checkValidityName(str[5])) return true;
-        else return false;
+        if(check1 && check2 && check3 && check4 && check5 && check6 && check7)
+        {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkValidityEntryNumber(String str)
-    {//returns the validity and also points out the error in the input of Entry numbers
+    {
+        //returns the validity and also points out the error in the input of Entry numbers
         if(str.length() == 0) return false;
         String[] Courses = {"BB1", "BB5", "CE1", "CH1", "CH7", "CS1", "CS5", "ME1", "EE1", "EE3", "EE5", "ME2", "MT1", "MT5", "MT6", "PH1", "TT1"};
-        boolean check1  = false, check2 = false, check3 = false, check4 = false;
-        int year = Integer.parseInt(str.substring(0, 4));
-        String program = str.substring(4, 7);
-        String zero = str.substring(7, 8);
-        int serialNumber = Integer.parseInt(str.substring(8));
-        if(year >= 2008 && year <= 2014) check1 = true;
-        for(String course : Courses)
-        {
-            if(course.equalsIgnoreCase(program)){
-                check2 = true;
-                break;
+            boolean check1  = false;
+            boolean check2 = false;
+            boolean check3 = false;
+            boolean check4 = false;
+
+            int year;
+            try {
+                year = Integer.parseInt(str.substring(0, 4));
             }
-        }
-        if(zero.equals("0")) check3 = true;
-        if(serialNumber > 0 && serialNumber < 1000) check4 = true;
-        return check1 && check2 && check3 && check4;
+            catch(NumberFormatException e)
+            {
+                return false;
+            }
+
+            String program = str.substring(4, 7);
+            String zero = str.substring(7, 8);
+
+            int serialNumber;
+            try {
+                serialNumber = Integer.parseInt(str.substring(8));
+            }
+            catch(NumberFormatException e)
+            {
+                return false;
+            }
+
+            if (year >= 2008 && year <= 2014) check1 = true;
+            for (String course : Courses) {
+                if (course.equalsIgnoreCase(program)) {
+                    check2 = true;
+                    break;
+                }
+            }
+
+            if (zero.equals("0")) check3 = true;
+            if (serialNumber > 0 && serialNumber < 1000) check4 = true;
+
+            return check1 && check2 && check3 && check4;
     }
+
+
 
     public boolean checkValidityName(String str)
     {//returns the validity and also points out the error in the input of Names excluding Team Name
-        if(str.length() == 0) return false;
+        if(str.length() == 0)
+            return false;
         char[] characters = str.toCharArray();
         for(char character : characters)
         {
