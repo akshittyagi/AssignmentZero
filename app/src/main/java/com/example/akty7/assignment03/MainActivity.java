@@ -1,5 +1,8 @@
 package com.example.akty7.assignment03;
 
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -150,47 +153,48 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkValidity(String[] str)
     {//returns the validity and also points out the error in the whole input
-        boolean check1=false,check2=check1,check3=check1,check4=check1,check5=check1,check6=check1,check7=check1;
+        boolean check1=true,check2=check1,check3=check1,check4=check1,check5=check1,check6=check1,check7=check1;
+        Drawable errorIcon = getResources().getDrawable(R.drawable.erroricon);
+        //TODO:Check and set bounds for error icon
+        errorIcon.setBounds(new Rect(0,0,errorIcon.getIntrinsicWidth(),errorIcon.getIntrinsicHeight()));
         if(str[0].length() == 0)
         {
-            editTxt.setError("Enter Team Name");
+            editTxt.setError("Enter Team Name",errorIcon);
             check1 =  false;
         }
         if(!checkValidityName(str[1]))
         {
-            editTxt2.setError("Enter Valid Student Name");
+            editTxt2.setError("Enter Valid Student Name",errorIcon);
             check2 =  false;
         }
         if(!checkValidityEntryNumber(str[2]))
         {
-            editTxt3.setError("Enter Valid Entry Number");
+            editTxt3.setError("Enter Valid Entry Number",errorIcon);
             check3 =  false;
         }
         if(!checkValidityName(str[3]))
         {
-            editTxt4.setError("Enter Valid Student Name");
+            editTxt4.setError("Enter Valid Student Name",errorIcon);
             check4 =  false;
         }
         if(!checkValidityEntryNumber(str[4]))
         {
-            editTxt5.setError("Enter Valid Entry Number");
+            editTxt5.setError("Enter Valid Entry Number",errorIcon);
             check5 =  false;
         }
         if(!checkValidityName(str[5]))
         {
-            editTxt6.setError("Enter Valid Student Name");
+            editTxt6.setError("Enter Valid Student Name",errorIcon);
             check6 =  false;
         }
         if(!checkValidityEntryNumber(str[6]))
         {
-            editTxt7.setError("Enter Valid Entry Number");
+            editTxt7.setError("Enter Valid Entry Number",errorIcon);
             check7 = false;
         }
-        if(check1 && check2 && check3 && check4 && check5 && check6 && check7)
-        {
-            return true;
-        }
-        return false;
+
+        return (check1 && check2 && check3 && check4 && check5 && check6 && check7);
+
     }
 
     public boolean checkValidityEntryNumber(String str)
@@ -202,7 +206,10 @@ public class MainActivity extends AppCompatActivity {
             boolean check2 = false;
             boolean check3 = false;
             boolean check4 = false;
-
+            if(str.length()!=11)
+            {
+                return false;
+            }
             int year;
             try {
                 year = Integer.parseInt(str.substring(0, 4));
