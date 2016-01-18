@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.lang.*;
@@ -47,65 +48,66 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //all editTexts initialized and set for onClick clearing
-        editTxt = (EditText) findViewById(R.id.editText);
-        editTxt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                editTxt.getText().clear();
-            }
-        });
-
-        editTxt2 = (EditText) findViewById(R.id.editText2);
-        editTxt2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                editTxt2.getText().clear();
-            }
-        });
-
-        editTxt3 = (EditText) findViewById(R.id.editText3);
-        editTxt3.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                editTxt3.getText().clear();
-            }
-        });
-
-        editTxt4 = (EditText) findViewById(R.id.editText4);
-        editTxt4.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                editTxt4.getText().clear();
-            }
-        });
-
-        editTxt5 = (EditText) findViewById(R.id.editText5);
-        editTxt5.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                editTxt5.getText().clear();
-            }
-        });
-
-        editTxt6 = (EditText) findViewById(R.id.editText6);
-        editTxt6.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                editTxt6.getText().clear();
-            }
-        });
-
-        editTxt7 = (EditText) findViewById(R.id.editText7);
-        editTxt7.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
-                editTxt6.getText().clear();
-            }
-        });
-
         //for debugging if FAB fails
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                editTxt = (EditText) findViewById(R.id.editText);
+                editTxt.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        editTxt.getText().clear();
+                    }
+                });
+
+                editTxt2 = (EditText) findViewById(R.id.editText2);
+                editTxt2.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt2.getText().clear();
+                    }
+                });
+
+                editTxt3 = (EditText) findViewById(R.id.editText3);
+                editTxt3.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt3.getText().clear();
+                    }
+                });
+
+                editTxt4 = (EditText) findViewById(R.id.editText4);
+                editTxt4.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt4.getText().clear();
+                    }
+                });
+
+                editTxt5 = (EditText) findViewById(R.id.editText5);
+                editTxt5.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt5.getText().clear();
+                    }
+                });
+
+                editTxt6 = (EditText) findViewById(R.id.editText6);
+                editTxt6.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt6.getText().clear();
+                    }
+                });
+
+                editTxt7 = (EditText) findViewById(R.id.editText7);
+                editTxt7.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt6.getText().clear();
+                    }
+                });
+
+
                 final String[] str = new String[7];
                 str[0]= editTxt.getText().toString();
                 str[1]= editTxt2.getText().toString();
@@ -130,6 +132,62 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editTxt = (EditText) findViewById(R.id.editText);
+                editTxt.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        editTxt.getText().clear();
+                    }
+                });
+
+                editTxt2 = (EditText) findViewById(R.id.editText2);
+                editTxt2.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt2.getText().clear();
+                    }
+                });
+
+                editTxt3 = (EditText) findViewById(R.id.editText3);
+                editTxt3.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt3.getText().clear();
+                    }
+                });
+
+                editTxt4 = (EditText) findViewById(R.id.editText4);
+                editTxt4.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt4.getText().clear();
+                    }
+                });
+
+                editTxt5 = (EditText) findViewById(R.id.editText5);
+                editTxt5.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt5.getText().clear();
+                    }
+                });
+
+                editTxt6 = (EditText) findViewById(R.id.editText6);
+                editTxt6.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt6.getText().clear();
+                    }
+                });
+
+                editTxt7 = (EditText) findViewById(R.id.editText7);
+                editTxt7.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View v)
+                    {
+                        editTxt6.getText().clear();
+                    }
+                });
+
+
                 final String[] str = new String[7];
                 str[0]= editTxt.getText().toString();
                 str[1]= editTxt2.getText().toString();
@@ -156,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
         boolean check1=true,check2=check1,check3=check1,check4=check1,check5=check1,check6=check1,check7=check1;
         Drawable errorIcon = getResources().getDrawable(R.drawable.erroricon);
         //TODO:Check and set bounds for error icon
-        errorIcon.setBounds(new Rect(0,0,errorIcon.getIntrinsicWidth(),errorIcon.getIntrinsicHeight()));
+        errorIcon.setBounds(new Rect(0,0,errorIcon.getIntrinsicWidth()/10,errorIcon.getIntrinsicHeight()/10));
         if(str[0].length() == 0)
         {
             editTxt.setError("Enter Team Name",errorIcon);
