@@ -16,32 +16,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Name"
-        android:id="@+id/textView0"/>
+        android:textStyle="bold"
+        android:id="@+id/textView0"
+        android:textSize="25sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Member1"
+        android:textStyle="bold"
         android:id="@+id/textView1"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="82dp" />
+        android:layout_marginTop="120dp"
+        android:textSize="15sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Member2"
+        android:textStyle="bold"
         android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="164dp" />
+        android:textSize="15sp"
+        android:layout_marginTop="240dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Member3"
+        android:textStyle="bold"
         android:id="@+id/textView3"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="246dp" />
+        android:textSize="15sp"
+        android:layout_marginTop="360dp" />
 
 
 </RelativeLayout>

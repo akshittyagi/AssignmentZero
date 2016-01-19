@@ -1,5 +1,6 @@
 package com.example.akty7.assignment03;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -32,19 +33,42 @@ public class ResponseActivity extends AppCompatActivity {
         txtView2.clearComposingText();
         txtView3.clearComposingText();
 
+
         Bundle bundle = getIntent().getExtras();
         String response=bundle.getString("Response");
+        int responseCode=Integer.parseInt(response.substring(21, 22));
 
-        //TODO:Detect response code from server and act accordingly
+        if(responseCode==0)
+        {
+            String typeOfResponse=response.substring(45);
+            response.replaceAll("[-+.^:,};]","");
+            Toast.makeText(getApplicationContext(),typeOfResponse,Toast.LENGTH_LONG);
+        }
+        else if(responseCode==1)
+        {
+            String typeOfResponse=response.substring(45);
+            response.replaceAll("[-+.^:,};]", "");
+            Toast.makeText(getApplicationContext(), typeOfResponse, Toast.LENGTH_LONG);
+            txtView.setText("Your team: " + bundle.getString("teamname") + " has successfully registered with us");
+            txtView1.setText("Details of First Team Member: \n" +
+                    "Name: " + bundle.getString("name1") + "\n" +
+                    "Entry Number: " + bundle.getString("entry1"));
+            txtView2.setText("Details of Second Team Member: \n" +
+                    "Name: " + bundle.getString("name2") + "\n" +
+                    "Entry Number: " + bundle.getString("entry2"));
+            if(bundle.getInt("TwoOrThree")==3)
+            {
+                txtView3.setText("Details of Third Team Member: \n" +
+                        "Name: " + bundle.getString("name3") + "\n" +
+                        "Entry Number: " + bundle.getString("entry3"));
+            }
+            else
+            {
+                txtView3.setText("The team " + bundle.getString("teamname") + " only has 2 members");
+            }
 
-//        if(responseCode==0)
-//        {
-//            String typeOfResponse=response.substring(45);
-//            response.replaceAll("[-+.^:,};]","");
-//            Toast.makeText(getApplicationContext(),typeOfResponse,Toast.LENGTH_LONG);
-//        }
-//
-//        Toast.makeText(getApplicationContext(),response.substring(21,22),Toast.LENGTH_LONG).show();
+        }
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +76,8 @@ public class ResponseActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Returning to registration page", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent returnIntent=new Intent(ResponseActivity.this,MainActivity.class);
+                startActivity(returnIntent);
             }
         });
     }
