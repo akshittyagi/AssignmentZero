@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendResult(final String[] str, final boolean isThreeMemberedTeam){
         // Test for function call
-        Snackbar.make(getCurrentFocus(), "Sending Data to server", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(findViewById(R.id.fab),"Sending data to server",Snackbar.LENGTH_LONG).show();
         RequestQueue queue = Volley.newRequestQueue(this);
 
         String url = "http://agni.iitd.ernet.in/cop290/assign0/register/";
@@ -254,13 +254,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent responseIntent=new Intent(MainActivity.this,ResponseActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("teamname", str[0]);
-                bundle.putString("entry1", str[1]);
-                bundle.putString("name1", str[2] );
-                bundle.putString("entry2", str[3]);
-                bundle.putString("name2", str[4]);
+                bundle.putString("entry1", str[2]);
+                bundle.putString("name1", str[1] );
+                bundle.putString("entry2", str[4]);
+                bundle.putString("name2", str[3]);
                 //not accessed if are3 = false
-                bundle.putString("entry3", str[5]);
-                bundle.putString("name3", str[6]);
+                bundle.putString("entry3", str[6]);
+                bundle.putString("name3", str[5]);
                 bundle.putString("Response",response);
                 bundle.putBoolean("isThree", isThreeMemberedTeam);
                 responseIntent.putExtras(bundle);
@@ -280,13 +280,12 @@ public class MainActivity extends AppCompatActivity {
                 String[] strToBePut=str;
                 Map<String,String> params =new HashMap<String,String>();
                 params.put("teamname", strToBePut[0]);
-                params.put("entry1", strToBePut[1]);
-                params.put("name1", strToBePut[2] );
-                params.put("entry2", strToBePut[3]);
-                params.put("name2", strToBePut[4]);
-                params.put("entry3", strToBePut[5]);
-                params.put("name3", strToBePut[6]);
-
+                params.put("entry1", strToBePut[2]);
+                params.put("name1", strToBePut[1] );
+                params.put("entry2", strToBePut[4]);
+                params.put("name2", strToBePut[3]);
+                params.put("entry3", strToBePut[6]);
+                params.put("name3", strToBePut[5]);
                 return params;
             }
 
