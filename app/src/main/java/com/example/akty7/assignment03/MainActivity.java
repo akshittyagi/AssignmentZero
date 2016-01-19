@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.os.Bundle;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -50,83 +50,83 @@ public class MainActivity extends AppCompatActivity {
 
         //all editTexts initialized and set for onClick clearing
         //for debugging if FAB fails
-        btn = (Button) findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                editTxt = (EditText) findViewById(R.id.editText);
-                editTxt.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        editTxt.getText().clear();
-                    }
-                });
-
-                editTxt2 = (EditText) findViewById(R.id.editText2);
-                editTxt2.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt2.getText().clear();
-                    }
-                });
-
-                editTxt3 = (EditText) findViewById(R.id.editText3);
-                editTxt3.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt3.getText().clear();
-                    }
-                });
-
-                editTxt4 = (EditText) findViewById(R.id.editText4);
-                editTxt4.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt4.getText().clear();
-                    }
-                });
-
-                editTxt5 = (EditText) findViewById(R.id.editText5);
-                editTxt5.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt5.getText().clear();
-                    }
-                });
-
-                editTxt6 = (EditText) findViewById(R.id.editText6);
-                editTxt6.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt6.getText().clear();
-                    }
-                });
-
-                editTxt7 = (EditText) findViewById(R.id.editText7);
-                editTxt7.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt6.getText().clear();
-                    }
-                });
-
-
-                final String[] str = new String[7];
-                str[0]= editTxt.getText().toString();
-                str[1]= editTxt2.getText().toString();
-                str[2]= editTxt3.getText().toString();
-                str[3]= editTxt4.getText().toString();
-                str[4]= editTxt5.getText().toString();
-                str[5]= editTxt6.getText().toString();
-                str[6]= editTxt7.getText().toString();
-                if(checkValidity(str))
-                {
-                    sendResult(str);
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Invalid Entry",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        btn = (Button) findViewById(R.id.button);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                editTxt = (EditText) findViewById(R.id.editText);
+//                editTxt.setOnClickListener(new View.OnClickListener() {
+//                    public void onClick(View v) {
+//                        editTxt.getText().clear();
+//                    }
+//                });
+//
+//                editTxt2 = (EditText) findViewById(R.id.editText2);
+//                editTxt2.setOnClickListener(new View.OnClickListener(){
+//                    public void onClick(View v)
+//                    {
+//                        editTxt2.getText().clear();
+//                    }
+//                });
+//
+//                editTxt3 = (EditText) findViewById(R.id.editText3);
+//                editTxt3.setOnClickListener(new View.OnClickListener(){
+//                    public void onClick(View v)
+//                    {
+//                        editTxt3.getText().clear();
+//                    }
+//                });
+//
+//                editTxt4 = (EditText) findViewById(R.id.editText4);
+//                editTxt4.setOnClickListener(new View.OnClickListener(){
+//                    public void onClick(View v)
+//                    {
+//                        editTxt4.getText().clear();
+//                    }
+//                });
+//
+//                editTxt5 = (EditText) findViewById(R.id.editText5);
+//                editTxt5.setOnClickListener(new View.OnClickListener(){
+//                    public void onClick(View v)
+//                    {
+//                        editTxt5.getText().clear();
+//                    }
+//                });
+//
+//                editTxt6 = (EditText) findViewById(R.id.editText6);
+//                editTxt6.setOnClickListener(new View.OnClickListener(){
+//                    public void onClick(View v)
+//                    {
+//                        editTxt6.getText().clear();
+//                    }
+//                });
+//
+//                editTxt7 = (EditText) findViewById(R.id.editText7);
+//                editTxt7.setOnClickListener(new View.OnClickListener(){
+//                    public void onClick(View v)
+//                    {
+//                        editTxt6.getText().clear();
+//                    }
+//                });
+//
+//
+//                final String[] str = new String[7];
+//                str[0]= editTxt.getText().toString();
+//                str[1]= editTxt2.getText().toString();
+//                str[2]= editTxt3.getText().toString();
+//                str[3]= editTxt4.getText().toString();
+//                str[4]= editTxt5.getText().toString();
+//                str[5]= editTxt6.getText().toString();
+//                str[6]= editTxt7.getText().toString();
+//                if(checkValidity(str))
+//                {
+//                    sendResult(str);
+//                }
+//                else
+//                {
+//                    Toast.makeText(getApplicationContext(),"Invalid Entry",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -322,13 +322,24 @@ public class MainActivity extends AppCompatActivity {
         // Test for function call
         Snackbar.make(getCurrentFocus(), "Sending Data to server", Snackbar.LENGTH_LONG).show();
         RequestQueue queue = Volley.newRequestQueue(this);
+        //int noOfMembers;
         String url = "http://agni.iitd.ernet.in/cop290/assign0/register/";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
                 Intent responseIntent=new Intent(MainActivity.this,ResponseActivity.class);
-
+                Bundle bundle = new Bundle();
+                bundle.putString("teamname", str[0]);
+                bundle.putString("entry1", str[1]);
+                bundle.putString("name1", str[2] );
+                bundle.putString("entry2", str[3]);
+                bundle.putString("name2", str[4]);
+                bundle.putString("entry3", str[5]);
+                bundle.putString("name3", str[6]);
+                bundle.putString("Response",response);
+                //bundle.putInt("2or3",noOfMembers);
+                responseIntent.putExtras(bundle);
                 startActivity(responseIntent);
 
             }
