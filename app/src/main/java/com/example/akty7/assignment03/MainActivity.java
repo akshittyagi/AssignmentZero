@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.os.Bundle;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editTxt5 = null;
     EditText editTxt6 = null;
     EditText editTxt7 = null;
+    Boolean are3 = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,83 +53,41 @@ public class MainActivity extends AppCompatActivity {
 
         //all editTexts initialized and set for onClick clearing
         //for debugging if FAB fails
-//        btn = (Button) findViewById(R.id.button);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                editTxt = (EditText) findViewById(R.id.editText);
-//                editTxt.setOnClickListener(new View.OnClickListener() {
-//                    public void onClick(View v) {
-//                        editTxt.getText().clear();
-//                    }
-//                });
-//
-//                editTxt2 = (EditText) findViewById(R.id.editText2);
-//                editTxt2.setOnClickListener(new View.OnClickListener(){
-//                    public void onClick(View v)
-//                    {
-//                        editTxt2.getText().clear();
-//                    }
-//                });
-//
-//                editTxt3 = (EditText) findViewById(R.id.editText3);
-//                editTxt3.setOnClickListener(new View.OnClickListener(){
-//                    public void onClick(View v)
-//                    {
-//                        editTxt3.getText().clear();
-//                    }
-//                });
-//
-//                editTxt4 = (EditText) findViewById(R.id.editText4);
-//                editTxt4.setOnClickListener(new View.OnClickListener(){
-//                    public void onClick(View v)
-//                    {
-//                        editTxt4.getText().clear();
-//                    }
-//                });
-//
-//                editTxt5 = (EditText) findViewById(R.id.editText5);
-//                editTxt5.setOnClickListener(new View.OnClickListener(){
-//                    public void onClick(View v)
-//                    {
-//                        editTxt5.getText().clear();
-//                    }
-//                });
-//
-//                editTxt6 = (EditText) findViewById(R.id.editText6);
-//                editTxt6.setOnClickListener(new View.OnClickListener(){
-//                    public void onClick(View v)
-//                    {
-//                        editTxt6.getText().clear();
-//                    }
-//                });
-//
-//                editTxt7 = (EditText) findViewById(R.id.editText7);
-//                editTxt7.setOnClickListener(new View.OnClickListener(){
-//                    public void onClick(View v)
-//                    {
-//                        editTxt6.getText().clear();
-//                    }
-//                });
-//
-//
-//                final String[] str = new String[7];
-//                str[0]= editTxt.getText().toString();
-//                str[1]= editTxt2.getText().toString();
-//                str[2]= editTxt3.getText().toString();
-//                str[3]= editTxt4.getText().toString();
-//                str[4]= editTxt5.getText().toString();
-//                str[5]= editTxt6.getText().toString();
-//                str[6]= editTxt7.getText().toString();
-//                if(checkValidity(str))
-//                {
-//                    sendResult(str);
-//                }
-//                else
-//                {
-//                    Toast.makeText(getApplicationContext(),"Invalid Entry",Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
+        editTxt6 = (EditText) findViewById(R.id.editText6);
+        editTxt7 = (EditText) findViewById(R.id.editText7);
+        editTxt6.setEnabled(false);
+        editTxt7.setEnabled(false);
+
+        CheckBox chk = (CheckBox) findViewById(R.id.checkBox);
+
+
+        chk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //is chkIos checked?
+                if (((CheckBox) v).isChecked()) {
+                    Toast.makeText(MainActivity.this,
+                            "Bro, awesome :)", Toast.LENGTH_LONG).show();
+                    editTxt6 = (EditText) findViewById(R.id.editText6);
+                    editTxt7 = (EditText) findViewById(R.id.editText7);
+                    editTxt6.setEnabled(true);
+                    editTxt7.setEnabled(true);
+                    are3 = true;
+                }
+                if (!((CheckBox) v).isChecked()) {
+                    Toast.makeText(MainActivity.this,
+                            "Aww :(", Toast.LENGTH_LONG).show();
+                    editTxt6 = (EditText) findViewById(R.id.editText6);
+                    editTxt7 = (EditText) findViewById(R.id.editText7);
+                    editTxt6.setEnabled(false);
+                    editTxt7.setEnabled(false);
+                    are3=false;
+                }
+
+            }
+        });
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
