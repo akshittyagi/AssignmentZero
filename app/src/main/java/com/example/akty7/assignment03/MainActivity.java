@@ -1,5 +1,6 @@
 package com.example.akty7.assignment03;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -326,6 +327,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
+                Intent responseIntent=new Intent(MainActivity.this,ResponseActivity.class);
+
+                startActivity(responseIntent);
+
             }
         }, new Response.ErrorListener() {
             @Override
