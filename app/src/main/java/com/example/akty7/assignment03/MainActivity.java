@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         editTxt7 = (EditText) findViewById(R.id.editText7);
         editTxt6.setEnabled(false);
         editTxt7.setEnabled(false);
-        editTxt6.setHint("Disabled");
-        editTxt7.setHint("Disabled");
+        editTxt6.setHint("");
+        editTxt7.setHint("");
 
         CheckBox chk = (CheckBox) findViewById(R.id.checkBox);
 
@@ -80,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
                     editTxt6.setEnabled(false);
                     editTxt7.setEnabled(false);
                     are3=false;
+                    editTxt6.setHint("");
+                    editTxt6.setError(null,null);
+                    editTxt7.setHint("");
+                    editTxt7.setError(null,null);
+                    if(editTxt6.hasFocus())
+                        editTxt6.clearFocus();
+                    if(editTxt7.hasFocus())
+                        editTxt7.clearFocus();
                 }
 
             }
@@ -104,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 if(are3) {
                     str[5] = editTxt6.getText().toString();
                     str[6] = editTxt7.getText().toString();
+                }
+                else{
+                    str[5] = "";
+                    str[6] = "";
                 }
                 if(checkValidity(str))
                 {
@@ -216,8 +228,12 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkValidityName(String str)
     {//returns the validity and also points out the error in the input of Names excluding Team Name
-        if(str.length() == 0)
+        if(str.length()>16){
             return false;
+        }
+        if(str.length() == 0) {
+            return false;
+        }
         char[] characters = str.toCharArray();
         for(char character : characters)
         {
@@ -297,7 +313,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
