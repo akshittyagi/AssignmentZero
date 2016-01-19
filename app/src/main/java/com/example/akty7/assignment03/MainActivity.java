@@ -279,11 +279,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void sendResult(final String[] str,boolean isThreeMemberedTeam){
+    public void sendResult(final String[] str, final boolean isThreeMemberedTeam){
         // Test for function call
         Snackbar.make(getCurrentFocus(), "Sending Data to server", Snackbar.LENGTH_LONG).show();
         RequestQueue queue = Volley.newRequestQueue(this);
-        final int noOfMembers=(isThreeMemberedTeam?2:3);
+
         String url = "http://agni.iitd.ernet.in/cop290/assign0/register/";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("entry3", str[5]);
                 bundle.putString("name3", str[6]);
                 bundle.putString("Response",response);
-                bundle.putInt("TwoOrThree",noOfMembers);
+                bundle.putBoolean("isThree", isThreeMemberedTeam);
                 responseIntent.putExtras(bundle);
                 startActivity(responseIntent);
                 MainActivity.this.finish();

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+
 public class ResponseActivity extends AppCompatActivity {
 
     TextView txtView=null;
@@ -32,6 +34,11 @@ public class ResponseActivity extends AppCompatActivity {
         txtView1.clearComposingText();
         txtView2.clearComposingText();
         txtView3.clearComposingText();
+
+        txtView.setText("");
+        txtView1.setText("");
+        txtView2.setText("");
+        txtView3.setText("");
 
 
         Bundle bundle = getIntent().getExtras();
@@ -56,7 +63,8 @@ public class ResponseActivity extends AppCompatActivity {
             txtView2.setText("Details of Second Team Member: \n" +
                     "Name: " + bundle.getString("name2") + "\n" +
                     "Entry Number: " + bundle.getString("entry2"));
-            if(bundle.getInt("TwoOrThree")==3)
+
+            if(bundle.getBoolean("isThree"))
             {
                 txtView3.setText("Details of Third Team Member: \n" +
                         "Name: " + bundle.getString("name3") + "\n" +
@@ -64,7 +72,7 @@ public class ResponseActivity extends AppCompatActivity {
             }
             else
             {
-                txtView3.setText("The team " + bundle.getString("teamname") + " only has 2 members");
+                txtView3.setText("The team " + bundle.getString("teamname") + " has only 2 members");
             }
 
         }
@@ -78,6 +86,7 @@ public class ResponseActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 Intent returnIntent=new Intent(ResponseActivity.this,MainActivity.class);
                 startActivity(returnIntent);
+                ResponseActivity.this.finish();
             }
         });
     }
