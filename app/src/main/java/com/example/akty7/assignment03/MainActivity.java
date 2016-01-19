@@ -3,8 +3,6 @@ package com.example.akty7.assignment03;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,11 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Bundle;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,9 +28,7 @@ import java.lang.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO: Make an Icon and a start/loading page
-    Button btn = null;
-    EditText editTxt = null;
+    EditText editTxt1 = null;
     EditText editTxt2 = null;
     EditText editTxt3 = null;
     EditText editTxt4 = null;
@@ -53,10 +47,17 @@ public class MainActivity extends AppCompatActivity {
 
         //all editTexts initialized and set for onClick clearing
         //for debugging if FAB fails
+        editTxt1 = (EditText) findViewById(R.id.editText);
+        editTxt2 = (EditText) findViewById(R.id.editText2);
+        editTxt3 = (EditText) findViewById(R.id.editText3);
+        editTxt4 = (EditText) findViewById(R.id.editText4);
+        editTxt5 = (EditText) findViewById(R.id.editText5);
         editTxt6 = (EditText) findViewById(R.id.editText6);
         editTxt7 = (EditText) findViewById(R.id.editText7);
         editTxt6.setEnabled(false);
         editTxt7.setEnabled(false);
+        editTxt6.setHint("Disabled");
+        editTxt7.setHint("Disabled");
 
         CheckBox chk = (CheckBox) findViewById(R.id.checkBox);
 
@@ -65,21 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //is chkIos checked?
+                //is chk checked?
                 if (((CheckBox) v).isChecked()) {
-                    Toast.makeText(MainActivity.this,
-                            "Bro, awesome :)", Toast.LENGTH_LONG).show();
-                    editTxt6 = (EditText) findViewById(R.id.editText6);
-                    editTxt7 = (EditText) findViewById(R.id.editText7);
+
                     editTxt6.setEnabled(true);
                     editTxt7.setEnabled(true);
+                    editTxt6.setHint("Name of Team Member 3");
+                    editTxt7.setHint("Entry Number of Team Member 3");
                     are3 = true;
                 }
                 if (!((CheckBox) v).isChecked()) {
-                    Toast.makeText(MainActivity.this,
-                            "Aww :(", Toast.LENGTH_LONG).show();
-                    editTxt6 = (EditText) findViewById(R.id.editText6);
-                    editTxt7 = (EditText) findViewById(R.id.editText7);
+
                     editTxt6.setEnabled(false);
                     editTxt7.setEnabled(false);
                     are3=false;
@@ -94,70 +91,20 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editTxt = (EditText) findViewById(R.id.editText);
-                editTxt.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        editTxt.getText().clear();
-                    }
-                });
 
-                editTxt2 = (EditText) findViewById(R.id.editText2);
-                editTxt2.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt2.getText().clear();
-                    }
-                });
-
-                editTxt3 = (EditText) findViewById(R.id.editText3);
-                editTxt3.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt3.getText().clear();
-                    }
-                });
-
-                editTxt4 = (EditText) findViewById(R.id.editText4);
-                editTxt4.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt4.getText().clear();
-                    }
-                });
-
-                editTxt5 = (EditText) findViewById(R.id.editText5);
-                editTxt5.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt5.getText().clear();
-                    }
-                });
-
-                editTxt6 = (EditText) findViewById(R.id.editText6);
-                editTxt6.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt6.getText().clear();
-                    }
-                });
-
-                editTxt7 = (EditText) findViewById(R.id.editText7);
-                editTxt7.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v)
-                    {
-                        editTxt6.getText().clear();
-                    }
-                });
-
+                //sends null values if are3 is false
 
                 final String[] str = new String[7];
-                str[0]= editTxt.getText().toString();
+                str[0]= editTxt1.getText().toString();
                 str[1]= editTxt2.getText().toString();
                 str[2]= editTxt3.getText().toString();
                 str[3]= editTxt4.getText().toString();
                 str[4]= editTxt5.getText().toString();
-                str[5]= editTxt6.getText().toString();
-                str[6]= editTxt7.getText().toString();
+
+                if(are3) {
+                    str[5] = editTxt6.getText().toString();
+                    str[6] = editTxt7.getText().toString();
+                }
                 if(checkValidity(str))
                 {
                     sendResult(str,are3);
@@ -179,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         errorIcon.setBounds(new Rect(0,0,errorIcon.getIntrinsicWidth()/10,errorIcon.getIntrinsicHeight()/10));
         if(str[0].length() == 0)
         {
-            editTxt.setError("Enter Team Name",errorIcon);
+            editTxt1.setError("Enter Team Name", errorIcon);
             check1 =  false;
         }
         if(!checkValidityName(str[1]))
@@ -202,15 +149,15 @@ public class MainActivity extends AppCompatActivity {
             editTxt5.setError("Enter Valid Entry Number",errorIcon);
             check5 =  false;
         }
-        if(!checkValidityName(str[5]))
-        {
-            editTxt6.setError("Enter Valid Student Name",errorIcon);
-            check6 =  false;
-        }
-        if(!checkValidityEntryNumber(str[6]))
-        {
-            editTxt7.setError("Enter Valid Entry Number",errorIcon);
-            check7 = false;
+        if(are3) {
+            if (!checkValidityName(str[5])) {
+                editTxt6.setError("Enter Valid Student Name", errorIcon);
+                check6 = false;
+            }
+            if (!checkValidityEntryNumber(str[6])) {
+                editTxt7.setError("Enter Valid Entry Number", errorIcon);
+                check7 = false;
+            }
         }
 
         return (check1 && check2 && check3 && check4 && check5 && check6 && check7);
@@ -296,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("name1", str[2] );
                 bundle.putString("entry2", str[3]);
                 bundle.putString("name2", str[4]);
+                //not accessed if are3 = false
                 bundle.putString("entry3", str[5]);
                 bundle.putString("name3", str[6]);
                 bundle.putString("Response",response);
