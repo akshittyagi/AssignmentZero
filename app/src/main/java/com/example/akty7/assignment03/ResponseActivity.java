@@ -48,14 +48,11 @@ public class ResponseActivity extends AppCompatActivity {
         if(responseCode==0)
         {
             String typeOfResponse=response.substring(45);
-            response.replaceAll("[-+.^:,};]","");
+            typeOfResponse=typeOfResponse.replaceAll("[-+.^:,};]","");
             Toast.makeText(getApplicationContext(),typeOfResponse,Toast.LENGTH_LONG);
         }
         else if(responseCode==1)
         {
-            String typeOfResponse=response.substring(45);
-            response.replaceAll("[-+.^:,};]", "");
-            Toast.makeText(getApplicationContext(), typeOfResponse, Toast.LENGTH_LONG);
             txtView.setText("Your team: " + bundle.getString("teamname") + " has successfully registered with us");
             txtView1.setText("Details of First Team Member: \n" +
                     "Name: " + bundle.getString("name1") + "\n" +
@@ -82,7 +79,7 @@ public class ResponseActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Returning to registration page", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Returning to the registration page", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent returnIntent=new Intent(ResponseActivity.this,MainActivity.class);
                 startActivity(returnIntent);

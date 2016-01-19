@@ -235,7 +235,6 @@ public class MainActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
                 Intent responseIntent=new Intent(MainActivity.this,ResponseActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("teamname", str[0]);
@@ -271,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("name2", strToBePut[4]);
                 params.put("entry3", strToBePut[5]);
                 params.put("name3", strToBePut[6]);
+
                 return params;
             }
 
