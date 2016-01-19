@@ -1,0 +1,27 @@
+Fri Jan 15 16:53:50 2016
+latexindent.pl version 2.1R, a script to indent .tex files
+latexindent.pl lives here: /home/karan/Downloads/latexindent/
+
+Modules are being loaded from the following directories:
+ 	/usr/share/perl/5.20/FindBin.pm
+	/usr/share/perl5/YAML/Tiny.pm
+	/usr/share/perl/5.20/File/Copy.pm
+	/usr/share/perl/5.20/File/Basename.pm
+	/usr/share/perl/5.20/Getopt/Long.pm
+	/usr/share/perl5/File/HomeDir.pm
+Directory for backup files and indent.log: /home/karan/Downloads/designdoc
+Reading defaultSettings.yaml from /home/karan/Downloads/latexindent/defaultSettings.yaml
+
+Home directory is /home/karan
+To specify user settings you would put indentconfig.yaml here: 
+	/home/karan/indentconfig.yaml
+
+Alternatively, you can use the hidden file .indentconfig.yaml as: 
+	/home/karan/.indentconfig.yaml
+
+Just out put to the terminal :)
+
+Line Count of /home/karan/Downloads/designdoc/main.tex: 70
+Line Count of indented /home/karan/Downloads/designdoc/main.tex: 70
+
+Line counts of original file and indented file match
