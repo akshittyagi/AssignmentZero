@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+//Activity for displaying instructions for using the application
 public class InstructionActivity extends AppCompatActivity {
     TextView txtView = null;
     @Override

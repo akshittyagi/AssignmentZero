@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+//Activity displaying information regarding
+//the developers of the application
 public class AboutActivity extends AppCompatActivity {
 
     @Override

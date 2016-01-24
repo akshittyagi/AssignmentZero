@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 
+//Activity handling splash screen
 public class Splash extends AppCompatActivity {
 
     private final int SPLASH_DISPLAYTIME=2500;
