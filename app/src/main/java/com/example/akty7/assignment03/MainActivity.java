@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         });
         errorIcon = getResources().getDrawable(R.drawable.erroricon);
         errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth() / 10, errorIcon.getIntrinsicHeight() / 10));
-
+/*
         editTxt1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
             public void onFocusChange(View v, boolean hasFocus) {
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+*/
     }
 
     public boolean checkValidity(String[] str)
