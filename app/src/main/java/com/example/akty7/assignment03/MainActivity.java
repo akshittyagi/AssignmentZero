@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTxt6 = null;
     EditText editTxt7 = null;
     Boolean are3 = false;
+    Drawable errorIcon;
 
 
     @Override
@@ -80,14 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
                     editTxt6.setEnabled(false);
                     editTxt7.setEnabled(false);
-                    are3=false;
+                    are3 = false;
                     editTxt6.setHint("");
-                    editTxt6.setError(null,null);
+                    editTxt6.setError(null, null);
                     editTxt7.setHint("");
-                    editTxt7.setError(null,null);
-                    if(editTxt6.hasFocus())
+                    editTxt7.setError(null, null);
+                    if (editTxt6.hasFocus())
                         editTxt6.clearFocus();
-                    if(editTxt7.hasFocus())
+                    if (editTxt7.hasFocus())
                         editTxt7.clearFocus();
                 }
 
@@ -124,7 +125,21 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Invalid Entry",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Invalid Entry", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        errorIcon = getResources().getDrawable(R.drawable.erroricon);
+        errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth() / 10, errorIcon.getIntrinsicHeight() / 10));
+
+        editTxt1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    Boolean isValid = checkValidityName(editTxt1.getText().toString());
+                    if(!isValid){
+                        editTxt1.setError("", errorIcon);
+                    }
                 }
             }
         });
@@ -134,8 +149,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean checkValidity(String[] str)
     {//returns the validity and also points out the error in the whole input
         boolean check1=true,check2=check1,check3=check1,check4=check1,check5=check1,check6=check1,check7=check1;
-        Drawable errorIcon = getResources().getDrawable(R.drawable.erroricon);
-        errorIcon.setBounds(new Rect(0,0,errorIcon.getIntrinsicWidth()/10,errorIcon.getIntrinsicHeight()/10));
+
         if(str[0].length() == 0)
         {
             editTxt1.setError("Enter Team Name", errorIcon);
