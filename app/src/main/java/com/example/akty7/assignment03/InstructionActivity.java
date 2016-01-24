@@ -17,7 +17,7 @@ public class InstructionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //TODO:Add instructions for this activity
-        String str="Instructions: \n " +
+        String str="\n\n " +
                 "This is a user registration app for students of COP290. " +
                 "The students are required to put in their valid Entry Numbers along with their names." +
                 "If there is any invalid entry, an error message specific to the invalid entry is shown. "+
