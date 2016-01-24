@@ -4,21 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin_about"
+    android:paddingLeft="@dimen/activity_horizontal_margin_about"
+    android:paddingRight="@dimen/activity_horizontal_margin_about"
+    android:paddingTop="@dimen/activity_vertical_margin_about"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.akty7.assignment03.AboutActivity"
     tools:showIn="@layout/activity_about">
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/fuckers"
+        android:layout_alignParentStart="true"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Fuckers"
+        android:text="Team Name: Doesn't matter"
         android:id="@+id/textView4"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
