@@ -24,7 +24,6 @@ public class ResponseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_response);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //TODO:Add icon for go-back on responseactivity page
         txtView=(TextView) findViewById(R.id.textView0);
         txtView1=(TextView) findViewById(R.id.textView1);
         txtView2=(TextView) findViewById(R.id.textView2);
