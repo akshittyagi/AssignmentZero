@@ -8,5 +8,9 @@
         android:id="@+id/Instructions"
         android:orderInCategory="200"
         android:title="Instructions"/>
+    <item
+        android:id="@+id/About"
+        android:orderInCategory="200"
+        android:title="About Us"/>
 
 </menu>
