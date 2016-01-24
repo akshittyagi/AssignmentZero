@@ -11,13 +11,25 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.akty7.assignment03.InstructionActivity"
     tools:showIn="@layout/activity_instruction">
-
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Instructions"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:id="@+id/textView5"
+  />
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Instructions"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:textSize="14sp"
         android:layout_marginTop="34dp" />
+
+
 </RelativeLayout>

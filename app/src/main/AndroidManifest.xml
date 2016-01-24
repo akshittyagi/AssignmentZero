@@ -28,7 +28,12 @@
         <activity
             android:name=".InstructionActivity"
             android:label="@string/title_activity_instruction"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.akty7.assignment03.MainActivity" />
+        </activity>
         <activity
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
