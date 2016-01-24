@@ -101,14 +101,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //sends null values if are3 is false
 
                 final String[] str = new String[7];
                 str[0]= editTxt1.getText().toString();
@@ -137,23 +133,10 @@ public class MainActivity extends AppCompatActivity {
         });
         errorIcon = getResources().getDrawable(R.drawable.erroricon);
         errorIcon.setBounds(new Rect(0, 0, errorIcon.getIntrinsicWidth() / 10, errorIcon.getIntrinsicHeight() / 10));
-/*
-        editTxt1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    Boolean isValid = checkValidityName(editTxt1.getText().toString());
-                    if(!isValid){
-                        editTxt1.setError("", errorIcon);
-                    }
-                }
-            }
-        });
-*/
     }
 
-    public boolean checkValidity(String[] str)
-    {//returns the validity and also points out the error in the whole input
+    public boolean checkValidity(String[] str) {
+        //returns the validity and also points out the error in the whole input
         boolean check1=true,check2=check1,check3=check1,check4=check1,check5=check1,check6=check1,check7=check1;
 
         if(str[0].length() == 0)
@@ -196,8 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean checkValidityEntryNumber(String str)
-    {
+    public boolean checkValidityEntryNumber(String str) {
         //returns the validity and also points out the error in the input of Entry numbers
         if(str.length() == 0) return false;
         String[] Courses = {"BB1", "BB5", "CE1", "CH1", "CH7", "CS1", "CS5", "ME1", "EE1", "EE3", "EE5", "ME2", "MT1", "MT5", "MT6", "PH1", "TT1"};
@@ -246,8 +228,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public boolean checkValidityName(String str)
-    {//returns the validity and also points out the error in the input of Names excluding Team Name
+    public boolean checkValidityName(String str) {
+        //returns the validity and also points out the error in the input of Names excluding Team Name
         if(str.length()>16){
             return false;
         }
@@ -264,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendResult(final String[] str, final boolean isThreeMemberedTeam){
         // Test for function call
+        // Bundling has been done to send data to another activity
         Snackbar.make(findViewById(R.id.fab),"Sending data to server",Snackbar.LENGTH_LONG).show();
         RequestQueue queue = Volley.newRequestQueue(this);
 

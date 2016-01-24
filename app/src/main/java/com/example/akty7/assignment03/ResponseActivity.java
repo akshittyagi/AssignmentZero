@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 
+//Takes data in the form a bundle and responds accordingly
 public class ResponseActivity extends AppCompatActivity {
 
     TextView txtView=null;
