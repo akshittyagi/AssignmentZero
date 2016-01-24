@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         editTxt7 = (EditText) findViewById(R.id.editText7);
         editTxt6.setEnabled(false);
         editTxt7.setEnabled(false);
+        editTxt6.setVisibility(View.GONE);
+        editTxt7.setVisibility(View.GONE);
         editTxt6.setHint("");
         editTxt7.setHint("");
 
@@ -73,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
                     editTxt6.setEnabled(true);
                     editTxt7.setEnabled(true);
+                    editTxt6.setVisibility(View.VISIBLE);
+                    editTxt7.setVisibility(View.VISIBLE);
                     editTxt6.setHint("Name of Team Member 3");
                     editTxt7.setHint("Entry Number of Team Member 3");
                     are3 = true;
@@ -81,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
                     editTxt6.setEnabled(false);
                     editTxt7.setEnabled(false);
+                    editTxt6.setVisibility(View.GONE);
+                    editTxt7.setVisibility(View.GONE);
                     are3 = false;
                     editTxt6.setHint("");
                     editTxt6.setError(null, null);
