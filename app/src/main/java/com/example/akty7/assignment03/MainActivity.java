@@ -12,6 +12,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -38,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     EditText editTxt7 = null;
     Boolean are3 = false;
     Drawable errorIcon;
+    Animation shake;
+
+
+
 
 
     @Override
@@ -64,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
         editTxt7.setHint("");
 
         CheckBox chk = (CheckBox) findViewById(R.id.checkBox);
-
+        shake = new TranslateAnimation(0, 5, 0, 0);
+        shake.setInterpolator(new CycleInterpolator(5));
+        shake.setDuration(300);
 
         chk.setOnClickListener(new View.OnClickListener() {
 
@@ -156,7 +165,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if(!checkValidityName(str[3]))
         {
-            editTxt4.setError("Enter Valid Student Name",errorIcon);
+           editTxt4.setError("Enter Valid Student Name",errorIcon);
+          //  editTxt4.startAnimation(shake);
+
             check4 =  false;
         }
         if(!checkValidityEntryNumber(str[4]))
